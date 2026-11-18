@@ -1,9 +1,6 @@
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import static java.lang.Thread.sleep;
 public class TriviaServer {
 
     private static final int PORT = 5000;
