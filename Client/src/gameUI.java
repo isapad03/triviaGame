@@ -133,11 +133,18 @@ public class gameUI extends Application {
     }
 
     // Set the current question
-    public void setQuestion(Question q) {
-        this.q = q;
+    public void setQuestion(String questionData) {
 
-        if (question != null) {
-            updateQuestion();
+String[] questionDataArr = questionData.split("|");
+
+        if (questionDataArr != null) {
+            question.setText(questionDataArr[0]);
+
+            optionA.setText("A: " + questionDataArr[1]);
+            optionB.setText("B: " + questionDataArr[2]);
+            optionC.setText("C: " + questionDataArr[3]);
+            optionD.setText("D: " + questionDataArr[4]);
+
         }
     }
 
@@ -158,14 +165,28 @@ public class gameUI extends Application {
     }
 
 
-    public  void connectToServer() {
 
-            serverIP = serverIPBox.getText();
-            System.out.println("Server IP: " + serverIP);
+    public void connectToServer() {
+        serverIP = serverIPBox.getText().trim();
+        System.out.println("Server IP: " + serverIP);
+
         showGameScreen();
-            game.connectServer(serverIP);
 
+        Thread connectionThread = new Thread(() -> {
+            try {
+                game.connectServer(serverIP);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        connectionThread.setDaemon(true);
+        connectionThread.start();
     }
+
+
+
+
 
 
 }

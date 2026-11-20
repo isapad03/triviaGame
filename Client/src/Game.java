@@ -1,7 +1,7 @@
 public class Game {
 
     private Client network;
-    private Question[] qestionBank;
+    private gameUI ui;
 
     public Game (){
 

@@ -22,7 +22,7 @@ public class Question {
     }
     public String getQuestionData(){
 
-        String questionData = question + "|" + options[0] + "|" + options[1] + "|" + options[2] + options[3];
+        String questionData = question + "|" + options[0] + "|" + options[1] + "|" + options[2] + "|" +  options[3];
 
         return questionData;
     }

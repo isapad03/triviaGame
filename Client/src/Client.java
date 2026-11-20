@@ -10,9 +10,10 @@ import static java.lang.System.in;
 import static java.lang.System.out;
 
 
-public class Client  {
+public class Client extends gameUI  {
 private BufferedReader in;
 private PrintWriter out;
+private String[] packetData;
 private volatile String message;
    // public static void main(String[] args) {
     public Client( String ip){
@@ -78,10 +79,19 @@ private volatile String message;
 
 
 
-    public void processMessage(String message){
+    public void processMessage(String message) {
 
         System.out.println(message);
+        packetData = message.split(",");
 
+   if(packetData[0].equals("nwq")){
+       setQuestion(packetData[1]);
+   }
 
     }
+
+
+
+
+
 }
